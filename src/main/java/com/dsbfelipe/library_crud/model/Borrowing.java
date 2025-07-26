@@ -22,11 +22,9 @@ public class Borrowing {
 
   private LocalDate borrowingDate;
 
-  public Borrowing(Long id, User user, Book book, LocalDate borrowingDate) {
-    this.id = id;
+  public Borrowing(User user, Book book) {
     this.user = user;
     this.book = book;
-    this.borrowingDate = borrowingDate;
   }
 
   public Long getId() {
