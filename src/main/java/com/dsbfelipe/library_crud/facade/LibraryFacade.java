@@ -8,12 +8,23 @@ import com.dsbfelipe.library_crud.model.Borrowing;
 import com.dsbfelipe.library_crud.repository.BookRepository;
 import com.dsbfelipe.library_crud.repository.BorrowingRepository;
 import com.dsbfelipe.library_crud.repository.UserRepository;
+import com.dsbfelipe.library_crud.strategy.FilterAllStrategy;
+import com.dsbfelipe.library_crud.strategy.FilterBookStrategy;
 
 @Service
 public class LibraryFacade {
   private final BookRepository bookRepo;
   private final UserRepository userRepo;
   private final BorrowingRepository borrowingRepo;
+  private FilterBookStrategy filterBookStrategy = new FilterAllStrategy();
+
+  public void setFilterBookStrategy(FilterBookStrategy strategy) {
+    this.filterBookStrategy = strategy;
+  }
+
+  public List<Book> filterBooks(String value) {
+    return filterBookStrategy.filter(bookRepo.findAll(), value);
+  }
 
   public LibraryFacade(BookRepository bookRepo, UserRepository userRepo, BorrowingRepository borrowingRepo) {
     this.bookRepo = bookRepo;
