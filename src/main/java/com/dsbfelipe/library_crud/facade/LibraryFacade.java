@@ -40,7 +40,7 @@ public class LibraryFacade {
     return userRepo.save(user);
   }
 
-  public Borrowing borrowBook(String userId, String isbn) {
+  public Borrowing borrowBook(Long userId, Long isbn) {
     User user = userRepo.findById(userId).orElseThrow();
     Book book = bookRepo.findById(isbn).orElseThrow();
 

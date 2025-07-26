@@ -1,20 +1,27 @@
 package com.dsbfelipe.library_crud.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "user")
 public class User {
   @Id
-  private String id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
   private String name;
 
-  public User(String id, String name) {
+  public User(){}
+
+  public User(Long id, String name) {
     this.id = id;
     this.name = name;
   }
-  
-  public String getId() {
+
+  public Long getId() {
     return id;
   }
   public String getName() {

@@ -1,28 +1,35 @@
 package com.dsbfelipe.library_crud.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "book")
 public class Book {
   @Id
-  private String isnb;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long isnb;
   private String title;
   private String author;
   private boolean borrowed;
+
+  public Book(){}
   
-  public Book(String isnb, String title, String author) {
+  public Book(Long isnb, String title, String author) {
     this.isnb = isnb;
     this.title = title;
     this.author = author;
     this.borrowed = false;
   }
 
-  public String getIsnb() {
+  public Long getIsnb() {
     return isnb;
   }
 
-  public void setIsnb(String isnb) {
+  public void setIsnb(Long isnb) {
     this.isnb = isnb;
   }
 
